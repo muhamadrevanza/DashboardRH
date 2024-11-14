@@ -94,60 +94,60 @@ if fl is not None:
     with col2:
         date2 = st.date_input("End Date", endDate)
 
-        # Validasi tanggal
-        if date1 > date2:
-            # Menampilkan pop-up peringatan dengan HTML dan CSS yang lebih menarik
-            st.markdown("""
-                <style>
-                @keyframes slide-in {
-                    0% { transform: translateX(100%); opacity: 0; }
-                    100% { transform: translateX(0); opacity: 1; }
-                }
+    # Validasi tanggal
+    if date1 > date2:
+        # Menampilkan pop-up peringatan dengan HTML dan CSS yang lebih menarik
+        st.markdown("""
+            <style>
+            @keyframes slide-in {
+                0% { transform: translateX(100%); opacity: 0; }
+                100% { transform: translateX(0); opacity: 1; }
+            }
 
-                .alert-box {
-                    display: flex;
-                    align-items: center;
-                    background-color: #f8d7da;
-                    color: #721c24;
-                    border-radius: 8px;
-                    padding: 15px;
-                    margin: 10px 0;
-                    border: 1px solid #f5c6cb;
-                    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-                    animation: slide-in 0.5s ease-out;
-                    font-family: Arial, sans-serif;
-                }
+            .alert-box {
+                display: flex;
+                align-items: center;
+                background-color: #f8d7da;
+                color: #721c24;
+                border-radius: 8px;
+                padding: 15px;
+                margin: 10px 0;
+                border: 1px solid #f5c6cb;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+                animation: slide-in 0.5s ease-out;
+                font-family: Arial, sans-serif;
+            }
 
-                .alert-icon {
-                    margin-right: 10px;
-                    flex-shrink: 0;
-                }
+            .alert-icon {
+                margin-right: 10px;
+                flex-shrink: 0;
+            }
 
-                .alert-content {
-                    flex-grow: 1;
-                }
+            .alert-content {
+                flex-grow: 1;
+            }
 
-                .alert-title {
-                    font-weight: bold;
-                    font-size: 1.1em;
-                }
+            .alert-title {
+                font-weight: bold;
+                font-size: 1.1em;
+            }
 
-                </style>
+            </style>
 
-                <div class="alert-box">
-                    <div class="alert-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
-                            <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm.93-11.412a.5.5 0 0 1-.86 0L7.002 5.3H6.998l-.003-.03A.5.5 0 0 1 7.5 5l.5.7.5-.7a.5.5 0 0 1 .43-.232c.16 0 .285.067.35.153l.05.076L8.93 3.588zM7.93 6.6a.5.5 0 0 1 .138.347v4.6a.5.5 0 0 1-1 0v-4.6a.5.5 0 0 1 .862-.347zM8 11.9c.5 0 .9.4.9.9s-.4.9-.9.9a.9.9 0 1 1 0-1.8z"/>
-                        </svg>
-                    </div>
-                    <div class="alert-content">
-                        <div class="alert-title">Peringatan</div>
-                        <div>Tanggal awal tidak boleh lebih besar dari tanggal akhir. Harap pilih tanggal yang benar.</div>
-                    </div>
+            <div class="alert-box">
+                <div class="alert-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-exclamation-circle-fill" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm.93-11.412a.5.5 0 0 1-.86 0L7.002 5.3H6.998l-.003-.03A.5.5 0 0 1 7.5 5l.5.7.5-.7a.5.5 0 0 1 .43-.232c.16 0 .285.067.35.153l.05.076L8.93 3.588zM7.93 6.6a.5.5 0 0 1 .138.347v4.6a.5.5 0 0 1-1 0v-4.6a.5.5 0 0 1 .862-.347zM8 11.9c.5 0 .9.4.9.9s-.4.9-.9.9a.9.9 0 1 1 0-1.8z"/>
+                    </svg>
                 </div>
-            """, unsafe_allow_html=True)
-        else:
-            st.write("Proses berjalan dengan tanggal yang dipilih.")
+                <div class="alert-content">
+                    <div class="alert-title">Peringatan</div>
+                    <div>Tanggal awal tidak boleh lebih besar dari tanggal akhir. Harap pilih tanggal yang benar.</div>
+                </div>
+            </div>
+        """, unsafe_allow_html=True)
+    else:
+        st.write("Proses berjalan dengan tanggal yang dipilih.")
 
     # Filter data based on date
     df = df[(df["date"] >= pd.to_datetime(date1)) & (df["date"] <= pd.to_datetime(date2))].copy()
