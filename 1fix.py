@@ -146,13 +146,13 @@ if fl is not None:
     # Sidebar input for target rakor (bulanan)
     st.sidebar.header("Input Target Rakor Bulanan:")
     new_rakor_targets = {
-        'FOB MV': st.sidebar.number_input("Target FOB MV (masukkan nilai target)", value=rakor_targets.get('FOB MV', get_value_by_status(df, 'FOB MV')), step=0.01),
-        'Rehandling Blok Timur': st.sidebar.number_input("Target Rehandling Blok Timur (masukkan nilai target)", value=rakor_targets.get('Rehandling Blok Timur', get_value_by_status(df, 'Rehandling Blok Timur')), step=0.01),
-        'Rehandling Antar Stock Blok Barat': st.sidebar.number_input("Target Rehandling Antar Stock Blok Barat (masukkan nilai target)", value=rakor_targets.get('Rehandling Antar Stock Blok Barat', get_value_by_status(df, 'Rehandling Antar Stock Blok Barat')), step=0.01),
-        'Rehandling Antar Stock Blok Timur': st.sidebar.number_input("Target Rehandling Antar Stock Blok Timur (masukkan nilai target)", value=rakor_targets.get('Rehandling Antar Stock Blok Timur', get_value_by_status(df, 'Rehandling Antar Stock Blok Timur')), step=0.01),
-        'Rehandling Blok Barat': st.sidebar.number_input("Target Rehandling Blok Barat (masukkan nilai target)", value=rakor_targets.get('Rehandling Blok Barat', get_value_by_status(df, 'Rehandling Blok Barat')), step=0.01),
-        'Housekeeping': st.sidebar.number_input("Target Housekeeping (masukkan nilai target)", value=rakor_targets.get('Housekeeping', get_value_by_status(df, 'Housekeeping')), step=0.01),
-        'Rehandling Pengiriman Konsumen': st.sidebar.number_input("Target Pengiriman Konsumen (masukkan nilai target)", value=rakor_targets.get('Rehandling Pengiriman Konsumen', get_value_by_status(df, 'Rehandling Pengiriman Konsumen')), step=0.01)
+        'FOB MV': st.sidebar.number_input("Target FOB MV", value=rakor_targets.get('FOB MV', get_value_by_status(df, 'FOB MV')), step=0.01),
+        'Rehandling Blok Timur': st.sidebar.number_input("Target Rehandling Blok Timur ", value=rakor_targets.get('Rehandling Blok Timur', get_value_by_status(df, 'Rehandling Blok Timur')), step=0.01),
+        'Rehandling Antar Stock Blok Barat': st.sidebar.number_input("Target Rehandling Antar Stock Blok Barat", value=rakor_targets.get('Rehandling Antar Stock Blok Barat', get_value_by_status(df, 'Rehandling Antar Stock Blok Barat')), step=0.01),
+        'Rehandling Antar Stock Blok Timur': st.sidebar.number_input("Target Rehandling Antar Stock Blok Timur", value=rakor_targets.get('Rehandling Antar Stock Blok Timur', get_value_by_status(df, 'Rehandling Antar Stock Blok Timur')), step=0.01),
+        'Rehandling Blok Barat': st.sidebar.number_input("Target Rehandling Blok Barat ", value=rakor_targets.get('Rehandling Blok Barat', get_value_by_status(df, 'Rehandling Blok Barat')), step=0.01),
+        'Housekeeping': st.sidebar.number_input("Target Housekeeping ", value=rakor_targets.get('Housekeeping', get_value_by_status(df, 'Housekeeping')), step=0.01),
+        'Rehandling Pengiriman Konsumen': st.sidebar.number_input("Target Pengiriman Konsumen", value=rakor_targets.get('Rehandling Pengiriman Konsumen', get_value_by_status(df, 'Rehandling Pengiriman Konsumen')), step=0.01)
     }
 
     # Save the rakor targets to JSON after input
@@ -199,7 +199,7 @@ if fl is not None:
     st.sidebar.header("Input Target SPPH/Mitra:")
     new_spph_mitra_targets = {}
     for spph_mitra in df_filtered['spph'].unique():
-        new_spph_mitra_targets[spph_mitra] = st.sidebar.number_input(f"Target for {spph_mitra} (masukkan nilai target)", min_value=0.0, value=spph_mitra_targets.get(spph_mitra, 0.0), step=0.01)
+        new_spph_mitra_targets[spph_mitra] = st.sidebar.number_input(f"Target for {spph_mitra} ", min_value=0.0, value=spph_mitra_targets.get(spph_mitra, 0.0), step=0.01)
 
     # Save the SPPH/Mitra targets to JSON after input
     save_json(spph_mitra_targets_file, new_spph_mitra_targets)
