@@ -245,11 +245,18 @@ if fl is not None:
     # Load existing SPPH/Mitra targets if available
     spph_mitra_targets = load_json(spph_mitra_targets_file)
 
-    # Sidebar for input target SPPH/Mitra
     st.sidebar.header("Input Target SPPH/Mitra:")
-    new_spph_mitra_targets = {}
-    for spph_mitra in df_filtered['spph'].unique():
-        new_spph_mitra_targets[spph_mitra] = st.sidebar.number_input(f"Target for {spph_mitra} ", min_value=0.0, value=spph_mitra_targets.get(spph_mitra, 0.0), step=0.01)
+    new_spph_mitra_targets = {
+    spph_mitra: st.sidebar.number_input(
+    f"Target for {spph_mitra}",
+                    value=spph_mitra_targets.get(spph_mitra, 0.0),
+        step=0.01
+                )
+                for spph_mitra in df_filtered['spph'].unique()
+            }
+
+    if not new_spph_mitra_targets:
+                new_spph_mitra_targets = spph_mitra_targets
 
     # Save the SPPH/Mitra targets to JSON after input
     save_json(spph_mitra_targets_file, new_spph_mitra_targets)
